@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-flow: column;
+    gap: 0;
+    min-height: 100vh;
+    font-family: 'Rubik';
+    background-color: var(--Very-light-gray);
+}
+
+:root {
+    /* Primary */
+    --Moderate-blue: hsl(238, 40%, 52%);
+    --Soft-Red: hsl(358, 79%, 66%);
+    --Light-grayish-blue: hsl(239, 57%, 85%);
+    --Pale-red: hsl(357, 100%, 86%);
+
+    /* Neutral */
+    --Dark-blue: hsl(212, 24%, 26%);
+    --Grayish-Blue: hsl(211, 10%, 45%);
+    --Light-gray: hsl(223, 19%, 93%);
+    --Very-light-gray: hsl(228, 33%, 97%);
+    --White: hsl(0, 0%, 100%);
+}
+
+.container {
+    width: 80%;
+    max-width: calc(720rem/16);
+    min-width: calc(340rem/16);
+    margin: 0 auto;
+}
+
+.msg-container, .sending-container {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 8px 20px -1px hsl(234,12%, 34%,0.1);
+    margin: 1rem auto;
+    padding: 1.5rem 2rem;
+    border-radius: 0.5rem;
+    display: grid;
+    grid-template-areas: 'msg msg'
+                         'rate reply';
+    row-gap: 1rem;
+}
+
+.replies {
+    width: 95%;
+    margin-left: auto;
+    padding-left: 2rem;
+    border-left: calc(2rem/16) solid var(--Light-gray);
+}
+
+
+.msg {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+    grid-area: msg;
+}
+
+.msg-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.pfp {
+    width: 2rem;
+}
+
+.time-posted{
+    color: var(--Grayish-Blue);
+}
+.msg-text {
+    color: var(--Grayish-Blue);
+    line-height: 1.5rem;
+}
+
+.feedbacks {
+    font-size: 1.25rem;
+}
+
+.rate {
+    display: flex;
+    flex-flow: row;
+    color: var(--Moderate-blue);
+    background-color: var(--Light-gray);
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    grid-area: rate;
+}
+
+
+.plus,.minus {
+    color: var(--Light-grayish-blue);
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor:pointer;
+    transition: 200ms ease-in-out;
+}
+
+.plus:hover,.minus:hover {
+    color: var(--Moderate-blue);
+}
+
+.plus.active, .minus.active {
+    color: var(--Moderate-blue);
+}
+
+.reply, .update {
+    margin-top: 0.4rem;
+    cursor: pointer;
+    grid-area: reply;
+    margin-left: auto;
+}
+
+.reply.you {
+    display: flex;
+    gap: 1rem
+}
+
+.respond:hover, .del-edit:hover  {
+    opacity: 0.7;
+}
+.del-edit:first-child {
+    color: var(--Soft-Red);
+}
+.respond, .del-edit {
+    color: var(--Moderate-blue);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    transition: 200ms ease-in-out;
+}
+
+p.you {
+    color: white;
+    background-color: var(--Moderate-blue);
+    padding: 0.2rem 0.5rem;
+    border-radius: calc(5rem/16);
+}
+
+#comment, #reply_comment, #edit_area {
+    resize: none;
+    border-radius: calc(12rem/16);
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-family: 'Rubik';
+}
+
+#comment:focus, #reply_comment:focus, #edit_area:focus {
+    outline: none;
+}
+
+#comment::placeholder, #reply_comment::placeholder {
+    font-size: 1rem;
+    color: var(--Grayish-Blue);
+    font-family: 'Rubik';
+    margin: auto 0;
+}
+
+.sending-container, .reply-container {
+    transition: ease-in-out 200ms;
+    transition-property: all;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+}
+.send {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#submit, #reply, #update, #cancel, #delete  {
+    border: none;
+    padding: 1rem 2rem;
+    background-color: var(--Moderate-blue);
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: calc(8rem/16);
+    cursor: pointer;
+    transition: 200ms ease-in-out;
+}
+
+#submit:hover, #reply:hover, #update:hover, #cancel:hover, #delete:hover {
+    opacity: 0.7;
+}
+
+
+.target {
+    font-weight: 700;
+    color: var(--Moderate-blue);
+}
+
+
+
+/* Modal  */
+
+.overlay {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.25);
+    color: rgba(0, 0, 0, 0.25);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transform: scale(0);
+}
+.overlay.active {
+    transform: scale(1);
+    pointer-events: all;
+}
+
+.modal {
+    position: fixed;
+    background-color: white;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    z-index: 99;
+    padding: 2rem;
+    width: calc(400rem/16);
+    border-radius: calc(8rem/16);
+    display: flex;
+    flex-flow: column;
+    transition: ease-in-out 300ms;
+    gap: 1rem;
+}
+.modal.active {
+    transform: translate(-50%,-50%) scale(1);
+}
+.modal h3 {
+    color: var(--Dark-blue);
+}
+
+
+.modal p {
+    color: var(--Grayish-Blue);
+    line-height: 1.6rem;
+}
+
+.modal-btns {
+    display: flex;
+    justify-content: space-between;
+}
+#cancel {
+    background-color: var(--Grayish-Blue);
+}
+
+#delete {
+    background-color: var(--Soft-Red);
+}
