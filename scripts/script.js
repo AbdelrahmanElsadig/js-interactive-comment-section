@@ -337,7 +337,7 @@ function delete_feature(btns = [...document.querySelectorAll('#del')]) {
 
 
 
-fetch('../data.json')
+fetch('https://abdelrahmanelsadig.github.io/js-interactive-comment-section/data.json')
   .then(res => res.json())
   .then(json => {
     create_message_from_json(json.comments);
