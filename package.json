@@ -1,0 +1,16 @@
+{
+  "name": "interactive-comments-section-main",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": "https://github.com/AbdelrahmanElsadig/js-interactive-comment-section.git",
+  "author": "Abdul Elsadig <abdelrahmanelsadig1@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^5.71.0",
+    "webpack-cli": "^4.9.2"
+  }
+}
